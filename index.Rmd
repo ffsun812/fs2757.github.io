@@ -1,12 +1,23 @@
 ---
-title: "My awesome website"
+title: "Fei Sun"
 output: 
   html_document:
     toc: true
     toc_float: true
-    theme: cerulean
 ---
 
-# This is Jeff's awesome website
+My name is Fei Sun. I'm currently a first year MS Biostatistics student at Columbia University.
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
+## About me
+
+I graduated from the University of California, Davis. My major is economics and statistics. In order to better study and analyze data, I chose to come to Columbia University to study biostatistics. This is my [resume](fs_resume.pdf).
+
+## Information
+
+Fei Sun\
++1 518-495-0077\
+42-20 24th St\
+Long Island City, NY 11101\
+Email: fs2757@columbia.edu\
+GitHub account: [Fei's GitHub](https://www.github.com/ffsun812)\
+Linkedin: [Fei's Linkedin](https://www.linkedin.com/in/fei-sun-838a6421b/)
