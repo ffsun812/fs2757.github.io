@@ -1,0 +1,17 @@
+name: "Yay internet!"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "Resume"
+      href: fs_resume.pdf
+    - icon: fa-envelope fa-lg
+      href: mailto:<fs2757@columbia.edu>
+    - icon: fa-github fa-lg
+      href: http://github.com/ffsun812/
+    - icon: fab fa-linkedin
+      href: https://www.linkedin.com/in/fei-sun-838a6421b/
+      
+output:
+  html_document:
+    theme: cosmo
