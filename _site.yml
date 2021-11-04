@@ -10,8 +10,6 @@ navbar:
       href: mailto:<fs2757@columbia.edu>
     - icon: fa-github fa-lg
       href: http://github.com/ffsun812/
-    - icon: fab fa-linkedin
-      href: https://www.linkedin.com/in/fei-sun-838a6421b/
     - text: "Dashboard"
       href: dashboard.html
       
