@@ -2,6 +2,9 @@ name: "Fei internet!"
 output_dir: "."
 navbar:
   title: "Home"
+  left:
+    - text: "Dashboard"
+      href: dashboard.html
   
   right:
     - text: "Resume"
@@ -10,8 +13,9 @@ navbar:
       href: mailto:<fs2757@columbia.edu>
     - icon: fa-github fa-lg
       href: http://github.com/ffsun812/
-    - text: "Dashboard"
-      href: dashboard.html
+    - icon: fab fa-linkedin
+      href: https://www.linkedin.com/in/fei-sun-838a6421b/
+    
       
 output:
   html_document:
