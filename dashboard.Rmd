@@ -1,16 +1,74 @@
 ---
-title: "NOAA"
+title: "Untitled"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include=FALSE}
+library(flexdashboard)
 library(tidyverse)
 library(p8105.datasets)
 library(plotly)
-library(flexdashboard)
 data("ny_noaa")
 ```
 
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Comparsion of three cities airport maximum and minmum temperature
+
+```{r}
+ny_noaa=ny_noaa%>% 
+  janitor::clean_names() %>% 
+  drop_na() %>% 
+   mutate(
+    location = recode(
+      id, 
+      USW00014732 = "Laguardia Airport",
+      USW00014771 = "Syracuse Hancock Airport",
+      USW00094789 = "JFK Airport"),
+    tmin = as.numeric(tmin)/10 ,
+    tmax = as.numeric(tmax)/10 ) %>% 
+  filter(id %in% c("USW00014732", "USW00014771", "USW00094789")) %>%  
+  mutate(year = lubridate::year(date)) 
+
+ny_noaa %>%
+  select(location,date,tmin,tmax)%>%
+  mutate(text_label = str_c("\nMax temperature: ", tmax, "\nMin temperaure: ", tmin,"\nLocation: ",location)) %>% 
+  plot_ly(
+    x = ~tmin, y = ~tmax, type = "scatter", mode = "markers",
+    color = ~location, text = ~text_label, alpha = 0.7)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Comparsion of three cities airport mean max-temperature in celsius by year
+
+```{r}
+mean_tmax = 
+  ny_noaa %>% 
+  group_by(year, location) %>% 
+  summarise(mean_tmax = mean(tmax))
+
+plot = 
+  ggplot(mean_tmax, aes(x = year, y = mean_tmax, color = location)) + 
+  geom_line() +
+  ylab('Mean Max temperature in celsius') 
+ggplotly(plot) 
+```
+
+### Distribution of three cities airport annual snowfall for 10 locations between 1981 and 2010.
+
+```{r}
+ny_noaa %>%
+  group_by(location, year) %>%
+  summarize(ysnow = sum(snow)) %>%
+  mutate(location = fct_reorder(location, ysnow)) %>% 
+  plot_ly(y = ~ysnow, color = ~location, type = "box", colors = "viridis") %>% 
+  layout(
+    xaxis = list(title = "Location", tickangle = 50),
+    yaxis = list(title = "Annual Snowfall"))
+```
