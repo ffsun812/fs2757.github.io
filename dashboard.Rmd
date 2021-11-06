@@ -1,9 +1,10 @@
 ---
-title: "Untitled"
+title: "NOAA"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    source_code: embed
 ---
 
 ```{r setup, include=FALSE}
@@ -71,4 +72,8 @@ ny_noaa %>%
   layout(
     xaxis = list(title = "Location", tickangle = 50),
     yaxis = list(title = "Annual Snowfall"))
+```
+
+```{r}
+rmarkdown::render("dashboard.Rmd", output_format = "flexdashboard::flex_dashboard")
 ```
